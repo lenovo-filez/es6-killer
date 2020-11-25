@@ -13,12 +13,13 @@ const blackList = [
   '/www/js/link_share/link_mobile',
   '/www/js/link_approval/link_mobile'
 ]
+
 const ignoreNames = blackList.join(',')
 const checkFilesArr = process.argv.slice(2).map(item => {
   return path.resolve(__dirname , item)
 })
 const checkFiles = checkFilesArr.join(' ') || './**/*.js'
-exec(`npx es-check es5 --not="${ignoreNames}" ${checkFiles}`, function (err, stdout, stderr) {
+exec(`node node_modules/es-check/index.js es5 --not="${ignoreNames}" ${checkFiles}`, function (err, stdout, stderr) {
   if(err) {
     console.log(stderr)
     console.log(stdout)
