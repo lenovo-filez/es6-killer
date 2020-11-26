@@ -26,6 +26,6 @@ exec(`node node_modules/es-check/index.js es5 --not="${ignoreNames}" ${checkFile
     process.exit(err.code)
   } else {
     console.log(stderr)
-    process.exit(0)
+    process.exit(0) 
   }
 })
