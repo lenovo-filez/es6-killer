@@ -2,8 +2,8 @@ const { exec } = require('child_process')
 const path = require('path')
 const fs = require('fs')
 let ignoreNames = 'node_modules'
-if(fs.existsSync('.checkignore')) {
-    ignoreNames = fs.readFileSync('.checkignore').toString().split('\r\n').join(',')
+if(fs.existsSync('.escheckignore')) {
+    ignoreNames = fs.readFileSync('.escheckignore').toString().split('\r\n').join(',')
 }
 const checkFilesArr = process.argv.slice(2).map(item => {
   return path.resolve(__dirname , item)
