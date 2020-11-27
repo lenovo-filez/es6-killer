@@ -1,20 +1,10 @@
 const { exec } = require('child_process')
 const path = require('path')
-// 忽略的黑名单
-// 黑名单写法：不可使用'./'写法，允许'/'或者'文件夹名开头'
-const blackList = [
-  '/index.js',
-  '/node_modules',
-  '/build',
-  '/www/mobile',
-  '/www/resource/pdfPlugin',
-  '/www/js/gallery',
-  '/www/js/module/Upload',
-  '/www/js/link_share/link_mobile',
-  '/www/js/link_approval/link_mobile'
-]
-
-const ignoreNames = blackList.join(',')
+const fs = require('fs')
+let ignoreNames = 'node_modules'
+if(fs.existsSync('.checkignore')) {
+    ignoreNames = fs.readFileSync('.checkignore').toString().split('\r\n').join(',')
+}
 const checkFilesArr = process.argv.slice(2).map(item => {
   return path.resolve(__dirname , item)
 })
