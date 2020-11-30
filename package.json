@@ -1,6 +1,6 @@
 {
 	"name": "es6-killer",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "",
 	"main": "index.js",
 	"dependencies": {
