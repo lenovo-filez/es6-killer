@@ -9,7 +9,7 @@ const checkFilesArr = process.argv.slice(2).map(item => {
   return path.resolve(__dirname , item)
 })
 const checkFiles = checkFilesArr.join(' ') || './**/*.js'
-exec(`node node_modules/es-check/index.js es5 --not="${ignoreNames}" ${checkFiles}`, function (err, stdout, stderr) {
+exec(`node node_modules/es-check/index.js es5 --module --not="${ignoreNames}" ${checkFiles}`, function (err, stdout, stderr) {
   if(err) {
     console.log(stderr)
     console.log(stdout)
