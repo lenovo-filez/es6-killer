@@ -3,7 +3,8 @@ const path = require('path')
 const fs = require('fs')
 let ignoreNames = 'node_modules'
 if(fs.existsSync('.escheckignore')) {
-    ignoreNames = fs.readFileSync('.escheckignore').toString().split('\r\n').join(',')
+    ignoreNames = fs.readFileSync('.escheckignore').toString().split('\n').join(',')
+    ignoreNames = ignoreNames.slice(0, ignoreNames.lastIndexOf(','))
 }
 const checkFilesArr = process.argv.slice(2).map(item => {
   return path.resolve(__dirname , item)
@@ -16,6 +17,6 @@ exec(`node node_modules/es-check/index.js es5 --not="${ignoreNames}" ${checkFile
     process.exit(err.code)
   } else {
     console.log(stderr)
-    process.exit(0) 
+    process.exit(0)
   }
 })
